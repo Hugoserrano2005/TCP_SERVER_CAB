@@ -4,11 +4,12 @@ Lista de tareas para completar la reorganizacion y modularizacion del sistema de
 
 ## Siguiente paso recomendado
 
-Adaptar las rutas de recursos de `apps/http_server.py` para que encuentre el frontend y las imagenes desde la nueva estructura. Despues se debe comprobar que el servidor HTTP arranca y sirve `frontend/index.html`.
+Probar la configuracion local y arrancar los servidores en la maquina de desarrollo o en la Raspberry Pi. La configuracion de red, base de datos, dispositivos y SSH esta centralizada en `src/sctlab/config/settings.py`.
 
 El criterio para dar este paso por terminado es:
 
-- `python -m apps.http_server` inicia el servidor sin errores de rutas.
+- Los valores de `src/sctlab/config/settings.py` son correctos para la maquina de ejecucion.
+- `python -m apps.http_server` inicia el servidor sin errores de configuracion.
 - La pagina principal carga `frontend/index.html`.
 - Los logos y recursos estaticos responden correctamente.
 - No se modifica la logica de telemetria ni de comandos.
@@ -28,16 +29,16 @@ Una vez superado esto, se puede probar el servidor TCP con el hardware disponibl
 - [x] Actualizar los imports de los drivers LakeShore, Cryo-Con y del controlador de relaciones.
 - [x] Revisar los imports de `apps/http_server.py`; actualmente no usa imports internos del paquete.
 - [x] Revisar y actualizar las rutas absolutas usadas para servir `frontend/index.html` y las imagenes.
-- [ ] Sustituir las rutas dependientes de una maquina concreta por rutas configurables.
+- [x] Sustituir las rutas y configuraciones dispersas por una configuracion centralizada en `src/sctlab/config/settings.py`.
 - [x] Ejecutar una comprobacion de imports sin conectar el hardware.
 
 ## 3. Configuracion y seguridad
 
-- [ ] Mover host, puertos y direcciones de dispositivos a la configuracion.
-- [ ] Mover las credenciales de PostgreSQL fuera del codigo fuente.
-- [ ] Usar variables de entorno para contrasenas, usuarios y rutas sensibles.
-- [ ] Crear `.env.example` sin secretos reales.
-- [ ] Revisar `.gitignore` para excluir secretos, logs, caches y datos generados.
+- [x] Mover host, puertos y direcciones de dispositivos a la configuracion.
+- [ ] Mover las credenciales de PostgreSQL fuera del codigo fuente (no necesario para el despliegue local actual).
+- [ ] Usar variables de entorno para contrasenas, usuarios y rutas sensibles (no necesario para el despliegue local actual).
+- [ ] Crear `.env.example` sin secretos reales (opcional si el sistema se mantiene en una sola maquina).
+- [x] Revisar `.gitignore` para excluir secretos, logs, caches y datos generados.
 - [ ] Separar configuracion de desarrollo, simulacion y produccion.
 
 ## 4. Modularizar el servidor TCP
@@ -80,7 +81,7 @@ Una vez superado esto, se puede probar el servidor TCP con el hardware disponibl
 - [ ] Separar el cliente TCP suscrito.
 - [ ] Separar el buffer temporal de temperaturas.
 - [ ] Crear funciones independientes para construir respuestas JSON.
-- [ ] Servir los recursos del frontend usando rutas relativas al proyecto.
+- [x] Servir los recursos del frontend usando rutas relativas al proyecto.
 - [ ] Mantener `apps/http_server.py` como punto de entrada.
 
 ## 8. Modularizar el frontend

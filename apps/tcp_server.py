@@ -20,10 +20,21 @@ from sctlab.config.defaults import (
 )
 
 from sctlab.config.colors import RESET, BOLD, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, GRAY
+from sctlab.config.settings import (
+    DB_HOST,
+    DB_NAME,
+    DB_PASSWORD,
+    DB_PORT,
+    DB_USER,
+    DB_MAX_CONNECTIONS,
+    DB_MIN_CONNECTIONS,
+    TCP_BIND_HOST,
+    TCP_PORT,
+)
 
 from sctlab.hardware.lakeshore370 import LakeShore370
 try:
-    from bbcon import BBCON
+    from sctlab.hardware.bbcon import BBCON
 except ImportError as e:
     print(f"❌ Failed importing Cryo-con driver\nReason: {e}")
 from sctlab.relations.step_ramp import RelationStepRampController
@@ -32,8 +43,8 @@ ls = LakeShore370()
 bb = BBCON()
 
 # Configuration
-HOST = '0.0.0.0' # Listen on all network interfaces
-PORT = 65432  # Port to listen on
+HOST = TCP_BIND_HOST
+PORT = TCP_PORT
 
 # Mutex to protect the heater power level
 # Define separated mutex to avoid that slow communications with Cryo-con
@@ -91,13 +102,13 @@ def init_db_pool():
     global DB_POOL
     if DB_POOL is None:
         DB_POOL = ThreadedConnectionPool(
-            minconn=1,
-            maxconn=10,   
-            host="192.168.38.4",
-            port=5432,
-            dbname="lakeshore_db",
-            user="lakeshore_app",  
-            password="Ricardo",
+            minconn=DB_MIN_CONNECTIONS,
+            maxconn=DB_MAX_CONNECTIONS,
+            host=DB_HOST,
+            port=DB_PORT,
+            dbname=DB_NAME,
+            user=DB_USER,
+            password=DB_PASSWORD,
         )
         print("✅ DB connection pool initialized")
 

@@ -12,6 +12,12 @@ from datetime import datetime
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs, quote, unquote
 import matplotlib.pyplot as plt
+from sctlab.config.settings import (
+    HTTP_HOST,
+    HTTP_PORT,
+    TCP_SERVER_HOST,
+    TCP_PORT,
+)
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -20,8 +26,7 @@ FRONTEND_INDEX = FRONTEND_ROOT / "index.html"
 SCTLAB_LOGO = FRONTEND_ROOT / "assets" / "SCTLab_logo.png"
 
 # Configuration for the TCP socket server
-TCP_HOST = '192.168.38.3'      #Replace with the Raspberry Pi's IP address: 192.168.38.3
-TCP_PORT = 65432 
+TCP_HOST = TCP_SERVER_HOST
 
 # Shared plot history is stored in memory while http_server.py is running.
 # This history survives when browser reloads, but is lost when http_server.py is restarted.
@@ -3148,11 +3153,11 @@ def receive_sensor_data(tcp_socket):
                 break
 
 def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler,
-        tcp_socket=None, port=8080):
+    tcp_socket=None, host=HTTP_HOST, port=HTTP_PORT):
     
     if tcp_socket is None: tcp_socket = connect_to_tcp_server()
     
-    server_address = ('', port)
+    server_address = (host, port)
     httpd = server_class(server_address, handler_class)
     print(f"HTTP server running on port {port}")
 

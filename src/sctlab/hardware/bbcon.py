@@ -18,12 +18,13 @@ from typing import Any
 import pyvisa as visa
 
 from sctlab.config.defaults import BBCON_NAME
+from sctlab.config.settings import BBCON_LINUX_ADDRESS, BBCON_WINDOWS_ADDRESS
 
 class BBCON:
     """Driver for the Cryo-con Model 32 black-body controller."""
 
-    LINUX_ADDRESS = "ASRL/dev/blackbody::INSTR"
-    WINDOWS_ADDRESS = "ASRL12::INSTR"
+    LINUX_ADDRESS = BBCON_LINUX_ADDRESS
+    WINDOWS_ADDRESS = BBCON_WINDOWS_ADDRESS
     VALID_RANGES = ("LOW", "MID", "HI")
 
     def __init__(
