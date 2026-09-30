@@ -9,9 +9,15 @@ import uuid
 import io
 import base64
 from datetime import datetime
+from pathlib import Path
 from urllib.parse import urlparse, parse_qs, quote, unquote
 import matplotlib.pyplot as plt
 
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+FRONTEND_ROOT = PROJECT_ROOT / "frontend"
+FRONTEND_INDEX = FRONTEND_ROOT / "index.html"
+SCTLAB_LOGO = FRONTEND_ROOT / "assets" / "SCTLab_logo.png"
 
 # Configuration for the TCP socket server
 TCP_HOST = '192.168.38.3'      #Replace with the Raspberry Pi's IP address: 192.168.38.3
@@ -244,11 +250,11 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         query = parse_qs(parsed.query)
 
         if path == '/':
-            with open('/home/SuperTech/TCP_SERVER_CAB/index.html', 'rb') as file:
+            with FRONTEND_INDEX.open('rb') as file:
                 _respond_browser(self, 'text/html; charset=utf-8', file.read())
 
         elif path == '/SCTLab_logo.png':
-            with open('/home/SuperTech/TCP_SERVER_CAB/SCTLab_logo.png', 'rb') as file:
+            with SCTLAB_LOGO.open('rb') as file:
                 _respond_browser(self, 'image/png', file.read())
 
         elif path == '/get-data':
@@ -1419,9 +1425,6 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         raise ValueError(f"Unsupported timestamp type: {type(ts)}")
 
     def render_run_plot_html(self, run_payload: dict) -> str:
-        import io, base64
-        import matplotlib.pyplot as plt
-
         channels = ["50K", "4K", "STILL", "MXC"]
         images = {}  
 
@@ -1643,8 +1646,6 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             Envía 'get_relation_file:<file_name>' al servidor TCP y extrae el JSON
             después de 'RELATION_FILE:OK:'.
             """
-            from urllib.parse import quote
-
             # Igual que haces desde JS: mandas el file_name encodeado
             cmd = f"get_relation_file:{quote(file_name)}"
             raw = self.send_command_to_tcp_server(cmd)
@@ -1681,9 +1682,6 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
                 return None
 
     def render_relation_plot_html(self, relation_payload: dict) -> str:
-        import io, base64
-        import matplotlib.pyplot as plt
-
         file_name = relation_payload.get("file_name", "relation")
         ch = relation_payload.get("channel_number", "?")
         label = relation_payload.get("label", "")

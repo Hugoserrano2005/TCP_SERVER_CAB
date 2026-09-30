@@ -17,7 +17,7 @@ from typing import Any
 
 import pyvisa as visa
 
-from default_config import BBCON_NAME
+from sctlab.config.defaults import BBCON_NAME
 
 class BBCON:
     """Driver for the Cryo-con Model 32 black-body controller."""

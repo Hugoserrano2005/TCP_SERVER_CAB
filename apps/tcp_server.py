@@ -11,22 +11,22 @@ from psycopg2.pool import ThreadedConnectionPool
 from contextlib import contextmanager
 from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
-from default_config import (DEFAULT_PID, CURRENT_RANGE_LIST, DEFAULT_MXC_RESISTANCE_RANGE_SETTINGS, SENSOR_RESISTANCE_RANGE_LIST, DEFAULT_CHANNELS, DEFAULT_EXTRA_CHANNELS, 
+from sctlab.config.defaults import (DEFAULT_PID, CURRENT_RANGE_LIST, DEFAULT_MXC_RESISTANCE_RANGE_SETTINGS, SENSOR_RESISTANCE_RANGE_LIST, DEFAULT_CHANNELS, DEFAULT_EXTRA_CHANNELS,
                             DEFAULT_CHANNELS_ID, DEFAULT_SETTINGS, DEFAULT_MXC_SETPOINT_MK, DEFAULT_MXC_HEATER_RANGE, DEFAULT_SENSOR_RESISTANCE_SETTINGS, DB_INSERT_INTERVAL, 
                             DEFAULT_CURVES, CURVE_NAMES, SAMPLE_CHANNELS
                             )
-from default_config import (
+from sctlab.config.defaults import (
     BBCON_NAME, MAX_BBCON_SETPOINT, ATTEMPTS
 )
 
-from colors import RESET, BOLD, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, GRAY
+from sctlab.config.colors import RESET, BOLD, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, GRAY
 
-from lakeshore370 import LakeShore370
+from sctlab.hardware.lakeshore370 import LakeShore370
 try:
     from bbcon import BBCON
 except ImportError as e:
     print(f"❌ Failed importing Cryo-con driver\nReason: {e}")
-from relation_step_ramp import RelationStepRampController
+from sctlab.relations.step_ramp import RelationStepRampController
 
 ls = LakeShore370()
 bb = BBCON()

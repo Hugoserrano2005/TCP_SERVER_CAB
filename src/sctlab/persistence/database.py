@@ -6,9 +6,9 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from psycopg2.pool import ThreadedConnectionPool
 from contextlib import contextmanager
-from default_config import (DB_INSERT_INTERVAL, SAMPLE_CHANNELS)
+from sctlab.config.defaults import (DB_INSERT_INTERVAL, SAMPLE_CHANNELS)
 
-from lakeshore370 import LakeShore370
+from sctlab.hardware.lakeshore370 import LakeShore370
 
 # DataBase conection params
 db_delay          = DB_INSERT_INTERVAL
