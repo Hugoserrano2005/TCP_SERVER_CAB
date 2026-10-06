@@ -86,19 +86,19 @@ Una vez superado esto, se puede probar el servidor TCP con el hardware disponibl
 
 ## 8. Modularizar el frontend
 
-- [ ] Mantener `frontend/index.html` centrado en la estructura HTML.
-- [ ] Extraer los estilos inline a `frontend/css/`.
+- [x] Mantener `frontend/index.html` centrado en la estructura HTML y referencias externas.
+- [ ] Extraer completamente los estilos inline a `frontend/css/` (la hoja actual es `style.css`; aun quedan estilos inline).
 - [ ] Separar layout, controles, graficas y tema en archivos CSS.
-- [ ] Extraer la logica JavaScript embebida a `frontend/js/`.
-- [ ] Crear `api.js` para las peticiones HTTP.
-- [ ] Crear `state.js` para el estado de la interfaz.
-- [ ] Crear `channels.js` para los canales y switches.
-- [ ] Crear `charts.js` para Chart.js y los buffers.
-- [ ] Crear `runs.js` para el control de RUNs.
-- [ ] Crear `relations.js` para las relaciones resistencia-temperatura.
-- [ ] Crear `tabs.js` para la navegacion de pestañas.
-- [ ] Crear `app.js` para la inicializacion general.
-- [ ] Revisar `frontend/js/index.js` y decidir si se integra o se elimina por ser codigo de prueba.
+- [x] Extraer la logica JavaScript a `frontend/js/`.
+- [x] Crear `api.js` para las peticiones HTTP.
+- [x] Crear `state.js` para el estado de la interfaz.
+- [x] Crear `charts.js` para Chart.js y los buffers.
+- [x] Crear `controls.js` para canales, switches y parametros de sensores.
+- [x] Crear `business.js` para RUNs y relaciones resistencia-temperatura.
+- [x] Crear `particles.js` para la animacion de fondo.
+- [x] Crear `main.js` para la inicializacion general y la actualizacion de telemetria.
+- [ ] Validar en navegador que los modulos cargados funcionan conjuntamente.
+- [ ] Revisar `frontend/js/script.js` y eliminarlo cuando la version modular este validada.
 - [ ] Revisar los textos, unidades y nombres de variables de la interfaz.
 
 ## 9. Drivers y simulacion

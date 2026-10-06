@@ -36,8 +36,17 @@ TCP_SERVER_CAB/
 |-- frontend/
 |   |-- index.html
 |   |-- css/
+|   |   `-- style.css
 |   |-- js/
-|   |   `-- index.js
+|   |   |-- state.js
+|   |   |-- api.js
+|   |   |-- ui.js
+|   |   |-- charts.js
+|   |   |-- controls.js
+|   |   |-- business.js
+|   |   |-- particles.js
+|   |   |-- main.js
+|   |   `-- script.js (referencia no cargada)
 |   `-- assets/
 |       |-- SCTLab_logo.png
 |       `-- logoCAB.png
@@ -237,20 +246,20 @@ Se pueden separar en archivos como:
 
 Contiene la logica JavaScript del cliente web.
 
-Se pueden organizar los modulos de la siguiente forma:
+La aplicacion carga actualmente estos modulos desde `frontend/index.html`, en este orden:
 
 - `api.js`: peticiones HTTP a la API.
 - `state.js`: estado local de la interfaz.
-- `channels.js`: canales, switches y parametros de sensores.
-- `charts.js`: graficas y buffers de datos.
-- `runs.js`: control y consulta de RUNs.
-- `relations.js`: relaciones resistencia-temperatura.
-- `tabs.js`: navegacion entre pestañas.
-- `app.js`: inicializacion general.
+- `ui.js`: registros, secciones colapsables, valores mostrados, etapas y pestañas.
+- `charts.js`: graficas de temperatura, grafica de relaciones y buffers visuales.
+- `controls.js`: canales, switches, parametros de sensores y comandos de configuracion.
+- `business.js`: control de RUNs y relaciones resistencia-temperatura.
+- `particles.js`: animacion de fondo.
+- `main.js`: inicializacion general y actualizacion periodica de telemetria.
 
-### `frontend/js/index.js`
+### `frontend/js/script.js`
 
-Contiene una funcion de prueba de Chart.js y envio de comandos. Debe considerarse un script auxiliar o de ejemplo hasta que se integre en la aplicacion principal.
+Conserva la implementacion monolitica original como referencia durante la migracion. No se carga desde `index.html`; debe eliminarse solo despues de validar completamente la version modular.
 
 ### `frontend/assets/`
 
