@@ -52,6 +52,7 @@
   gap: 10px;
   padding: 6px 0;
   width: 100%;
+  margin-bottom: 10px;
 }
 body {
   font-family: Arial, sans-serif;
@@ -234,34 +235,34 @@ label {
 }
 button {
   padding: 10px 20px;
-  font-size: 15px; /* Aumentado ligeramente para mejor pulsación */
-  background-color: #3b82f6; /* Azul primario */
+  font-size: 15px;
+  background-color: #3b82f6; 
   color: white;
   border: none;
-  border-radius: 8px; /* Esquinas redondeadas */
+  border-radius: 8px; 
   cursor: pointer;
   margin-top: 15px;
   width: 100%;
   font-weight: 600;
   transition:
     background-color 0.2s,
-    transform 0.1s; /* Transiciones suaves */
+    transform 0.1s;
 }
 
 .inline-button {
   width: auto;
-  padding: 8px 18px; /* Relleno más pequeño para botones en línea */
+  padding: 8px 18px; 
   margin-top: 0;
 }
 
 button:hover {
-  background-color: #2563eb; /* Azul más oscuro al pasar el ratón */
-  transform: translateY(-1px); /* Efecto de elevación */
+  background-color: #2563eb;
+  transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 button:active {
-  transform: translateY(0); /* Vuelve a su lugar al hacer click */
+  transform: translateY(0);
 }
 .log-box {
   width: 98.5%;
@@ -352,7 +353,7 @@ select option:disabled {
 }
 .section-content {
   overflow: hidden;
-  max-height: 1000px; /* allow transition to work */
+  max-height: 1000px;
   transition: max-height 0.3s ease-in-out;
 }
 .section-content.collapsed {
@@ -368,22 +369,22 @@ select option:disabled {
 }
 
 .circular-checkbox input {
-  display: none; /* hide default checkbox */
+  display: none;
 }
 
 .circular-checkbox span {
   width: 18px;
   height: 18px;
-  border: 2px solid #007bff; /* blue border */
+  border: 2px solid #007bff;
   border-radius: 50%;
   display: inline-block;
   margin-right: 6px;
-  background-color: transparent; /* no fill when unchecked */
+  background-color: transparent;
   transition: background-color 0.2s ease;
 }
 
 .circular-checkbox input:checked + span {
-  background-color: #007bff; /* blue fill when checked */
+  background-color: #007bff;
 }
 
 .reset-toggle {
@@ -434,28 +435,28 @@ select option:disabled {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Move the canvas to the background */
+  z-index: -1; 
 }
 .global-settings-title {
   display: flex;
   align-items: center;
-  gap: 10px; /* Espacio entre el icono y el texto */
+  gap: 10px; 
   font-size: 1.2rem;
   font-weight: 700;
   color: #361f37;
-  margin-bottom: 15px; /* Separación del título con los controles */
+  margin-bottom: 15px;
 }
 
 .global-settings-title .icon {
   font-size: 1.5rem;
-  color: #3b82f6; /* Color azul */
+  color: #3b82f6;
 }
 
 .global-controls-row {
-  display: grid;
-  grid-template-columns: auto auto auto 1fr auto;
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos salten a la siguiente línea si no caben */
   align-items: center;
-  column-gap: 18px; /* antes 24px */
+  gap: 18px; 
   width: 100%;
 }
 
@@ -467,10 +468,9 @@ select option:disabled {
   border: 1px solid #d1d5db;
   border-radius: 8px;
   background-color: #f9fafb;
-  flex-shrink: 0; /* Evita que se encoja */
+  flex-shrink: 0; 
 }
 
-/* Ajuste del desplegable para que se parezca al panel anterior */
 
 .log-card {
   width: 100%;
@@ -604,37 +604,40 @@ select option:disabled {
 .run-control {
   display: flex;
   align-items: center;
-  gap: 8px; /* Espacio entre los elementos de control */
+  flex-wrap: wrap; /* Permite que los inputs internos bajen de línea en pantallas minúsculas */
+  gap: 8px;
   padding: 8px 12px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
   background-color: #f9fafb;
-  flex-shrink: 0;
+  /* Nota: Se ha eliminado flex-shrink: 0 para que pueda adaptarse */
 }
 
 .run-control .run-label {
   width: auto;
   font-weight: 700;
-  margin-right: 0; /* Elimina el margen derecho si se usa gap */
+  margin-right: 0;
 }
 
 .run-control .run-input {
-  width: 40px; /* Tamaño adecuado para el ID */
+  width: 40px;
   padding: 4px 6px;
   font-size: 14px;
 }
 
 .run-control .inline-button {
-  padding: 6px 10px; /* Botones más pequeños para la barra de ajustes */
+  padding: 6px 10px;
   min-width: unset;
 }
+
 .run-control-floating {
-  margin-left: auto;
-  flex-shrink: 0;
+  margin-left: auto; /* Empuja el contenedor al extremo derecho */
 }
+
 .autoscan-panel {
   margin-right: 26px;
 }
+
 .autoscan-panel,
 .channel-dropdown-summary,
 .run-control {
@@ -704,7 +707,7 @@ select option:disabled {
   opacity: 0.7;
 }
 .run-control-floating {
-  justify-self: end; /* ← CLAVE EN GRID */
+  justify-self: end;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -712,7 +715,7 @@ select option:disabled {
 
 .run-select {
   width: 100%;
-  max-width: 420px; /* ← MISMO ANCHO QUE EL CONTENEDOR */
+  max-width: 420px;
   padding: 8px 10px;
 
   border-radius: 8px;
@@ -725,14 +728,14 @@ select option:disabled {
   opacity: 0.7;
   cursor: not-allowed;
 }
+
 .recent-runs {
+  flex: 1 1 200px; /* Permite que ocupe el espacio disponible y empuje el control de RUN a la derecha */
   display: flex;
   flex-direction: column;
   gap: 6px;
-
-  max-width: 420px; /* ← ANCHO CONTROLADO */
+  max-width: 420px;
   width: 100%;
-
   margin: 0;
   text-align: left;
   margin-left: -6px;
@@ -869,13 +872,12 @@ select option:disabled {
   box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
 }
 
-/* Ajuste fino del círculo para que no mueva el texto */
 .channel-dropdown-menu .status-indicator-circle {
   width: 10px !important;
   height: 10px !important;
   border-width: 1px !important;
   flex-shrink: 0;
-  margin-left: 6px; /* Separación del texto "Ch X" */
+  margin-left: 6px;
 }
 
 .top-header {
@@ -907,16 +909,12 @@ select option:disabled {
 
 .stage-title-mxc {
   display: grid;
-
   grid-template-columns: minmax(250px, 1fr) minmax(750px, 3fr) auto;
-
   column-gap: 20px;
   row-gap: 0;
   align-items: center;
-
   min-height: 0;
   padding: 14px 24px 8px 24px;
-
   cursor: default;
 }
 
@@ -940,19 +938,15 @@ select option:disabled {
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
-
   display: flex;
   flex-direction: column;
   gap: 10px;
-
   padding: 12px 14px;
   margin-left: 0;
-
   background-color: white;
   border-radius: 8px;
   border: 1px solid #e5e7eb;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
   cursor: default;
 }
 
@@ -1064,4 +1058,216 @@ select option:disabled {
 
 .stage-card.stage-mxc .stage-body {
   padding-top: 8px;
+}
+
+/* --- Extracted Inline Styles --- */
+
+.autoscan-label {
+  width: auto;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.switch-no-margin {
+  margin-left: 0;
+}
+
+.run-label-desc {
+  margin-left: 10px;
+}
+
+.run-input-desc {
+  flex: 1; /* Permite que el input ceda espacio al hacer zoom */
+  min-width: 140px; /* Reducido de 240px fijos para evitar desbordes */
+  max-width: 240px;
+}
+
+.log-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mxc-control-wrapper {
+  margin-top: 15px;
+}
+
+.input-80 {
+  width: 80px;
+}
+
+.input-90 {
+  width: 90px;
+}
+
+.input-120 {
+  width: 120px;
+}
+
+.input-160 {
+  width: 160px;
+}
+
+.control-row-mt {
+  margin-top: 10px;
+}
+
+.control-row-center {
+  margin-top: 10px;
+  align-items: center;
+}
+
+.control-row-header {
+  margin-bottom: 15px;
+  align-items: center;
+  padding-left: 0;
+}
+
+.control-row-actions {
+  margin-top: 14px;
+  gap: 10px;
+}
+
+.progress-container {
+  display: none;
+  margin-top: 10px;
+}
+
+.progress-track {
+  width: 100%;
+  background-color: #ddd;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 20px;
+  background-color: #4caf50;
+}
+
+.progress-text {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.progress-container-small {
+  display: none;
+  margin-top: 8px;
+}
+
+.progress-track-small {
+  width: 100%;
+  background-color: #eee;
+}
+
+.progress-fill-small {
+  width: 0%;
+  height: 12px;
+  background-color: #4caf50;
+}
+
+.progress-text-small {
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.lakeshore-plot-panel-flex {
+  flex: 3;
+  min-width: 750px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+.time-range-label {
+  margin: 0 10px 0 25px;
+}
+
+.time-range-label-stage {
+  margin-left: 30px;
+  margin-right: 0px;
+}
+
+.time-range-select {
+  margin-right: 50px;
+}
+
+.reset-btn {
+  margin-right: 25px;
+  padding: 8px 18px;
+  min-width: 160px;
+}
+
+.channel-name-wrapper {
+  display: flex;
+  align-items: center;
+  width: 75px;
+}
+
+.channel-name-label {
+  width: auto;
+  margin: 0;
+  font-size: 14px;
+}
+
+.rch-box-right {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.channel-dropdown-extra {
+  margin-left: 10px;
+}
+
+.summary-extra {
+  min-width: 100px;
+  padding: 4px 8px;
+}
+
+.menu-extra {
+  min-width: 320px;
+}
+
+.settings-label {
+  width: auto;
+  margin-right: 8px;
+}
+
+.settings-select-wide {
+  width: 160px;
+  margin-left: 0;
+}
+
+.settings-select-narrow {
+  width: 90px;
+  margin-left: 0;
+}
+
+#relationRampControls {
+  display: none;
+}
+
+.select-120 {
+  width: 120px;
+}
+
+.input-small {
+  width: 90px;
+  height: 32px;
+}
+
+.unit-label {
+  margin-left: 6px;
+}
+
+.relation-label-input {
+  margin-left: 10px;
+  width: 160px;
+}
+
+.btn-120 {
+  width: 120px;
 }
