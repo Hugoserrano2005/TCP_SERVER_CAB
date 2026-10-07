@@ -86,9 +86,8 @@ Una vez superado esto, se puede probar el servidor TCP con el hardware disponibl
 
 ## 8. Modularizar el frontend
 
-- [x] Mantener `frontend/index.html` centrado en la estructura HTML y referencias externas.
-- [ ] Extraer completamente los estilos inline a `frontend/css/` (la hoja actual es `style.css`; aun quedan estilos inline).
-- [ ] Separar layout, controles, graficas y tema en archivos CSS.
+- [x] Extraer completamente los estilos inline a `frontend/css/`.
+- [x] Separar layout, controles, graficas y tema en archivos CSS (`theme.css`, `layout.css`, `controls.css`, `charts.css`, `relations.css` y `style.css` como bundle).
 - [x] Extraer la logica JavaScript a `frontend/js/`.
 - [x] Crear `api.js` para las peticiones HTTP.
 - [x] Crear `state.js` para el estado de la interfaz.

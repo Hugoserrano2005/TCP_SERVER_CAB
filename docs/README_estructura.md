@@ -36,7 +36,12 @@ TCP_SERVER_CAB/
 |-- frontend/
 |   |-- index.html
 |   |-- css/
-|   |   `-- style.css
+|   |   |-- theme.css
+|   |   |-- layout.css
+|   |   |-- controls.css
+|   |   |-- charts.css
+|   |   |-- relations.css
+|   |   `-- style.css (bundle import)
 |   |-- js/
 |   |   |-- state.js
 |   |   |-- api.js
@@ -235,12 +240,14 @@ El documento debe contener principalmente HTML y referencias a las hojas de esti
 
 Contiene los estilos CSS de la interfaz.
 
-Se pueden separar en archivos como:
+Se organiza de forma modular en:
 
-- `layout.css`: distribucion general y paneles.
-- `controls.css`: botones, entradas, selectores y switches.
-- `charts.css`: tamanos y disposicion de graficas.
-- `theme.css`: colores, tipografia y apariencia general.
+- `theme.css`: colores, tipografía, canvas de partículas, indicadores y utilidades generales.
+- `layout.css`: distribución general, cabecera superior, navegación por pestañas y paneles.
+- `controls.css`: botones, entradas, selectores, switches, dropdowns, barra MXC y barras de progreso.
+- `charts.css`: tamaños de gráficas, canvas, mini-gráfica MXC y registros (logs).
+- `relations.css`: paneles, controles y reconstrucción de la pestaña Resistance vs. TMXC.
+- `style.css`: hoja maestra que importa todos los módulos anteriores mediante `@import`.
 
 ### `frontend/js/`
 
